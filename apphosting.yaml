@@ -1,0 +1,22 @@
+runConfig:
+  cpu: 2
+  minInstances: 0
+  maxInstances: 14
+  concurrency: 2
+  memoryMiB: 1024
+
+env:
+  # Override with environment-specific values.
+  - variable: ENVIRONMENT
+    value: STAGING
+  # Set unique values for each deploy phase!
+  - variable: PHASE
+    value: BUILD
+    availability:
+      - BUILD
+  - variable: PHASE
+    value: RUN
+    availability:
+      - RUNTIME
+  - variable: GOOGLE_GENAI_API_KEY
+    secret: GOOGLE_GENAI_API_KEY
